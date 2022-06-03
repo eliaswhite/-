@@ -1,5 +1,5 @@
 <template>
-  <main>Main</main>
+  <main>Menu</main>
   <footer>Rodapé</footer>
 </template>
 

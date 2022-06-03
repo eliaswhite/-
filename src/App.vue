@@ -1,16 +1,9 @@
+<script setup>
+import HeaderComp from "@/components/template/HeaderComp.vue";
+</script>
+
 <template>
-  <header>
-    <div class="menu-esquerdo">
-      <span>Home</span>
-      <span>|</span>
-      <span>Jogadores</span>
-      <span>|</span>
-      <span>Times</span>
-    </div>
-    <div class="menu-direito">
-      <span>Sair</span>
-    </div>
-  </header>
+  <HeaderComp />
   <RouterView />
 </template>
 
@@ -18,21 +11,24 @@
 @import "@/assets/base.css";
 
 #app {
-  max-width: 1280px;
+  max-width: 1300px;
   margin: 0 auto;
-  height: 100vh;
+  height: 110vh;
   font-weight: normal;
 }
 
-header,
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 footer {
   height: 10%;
-  background-color: rgb(44, 44, 143);
+  background-color: rgb(70, 44, 143);
   color: white;
   font-size: 1.3rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding-left: 20px;
 }
 
