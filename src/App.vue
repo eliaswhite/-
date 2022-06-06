@@ -1,10 +1,14 @@
 <script setup>
 import HeaderComp from "@/components/template/HeaderComp.vue";
+import RodapeComp from "@/components/template/RodapeComp.vue";
 </script>
 
 <template>
   <HeaderComp />
+  <main>
   <RouterView />
+  </main>
+  <RodapeComp />
 </template>
 
 <style>
@@ -38,6 +42,6 @@ header span {
 
 main {
   height: 70%;
-  background-color: rgb(180, 56, 238);
+  background-color: rgb(82, 191, 135);
 }
 </style>

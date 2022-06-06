@@ -1,6 +1,5 @@
 <template>
-  <header>
-  </header>
+  <footer>Rodapé</footer>
 </template>
 
 <style>
