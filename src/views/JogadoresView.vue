@@ -1,47 +1,70 @@
 <script>
+import { v4 as uuid4 } from "uuid";
 export default {
-  data () {
+  data() {
     return {
       jogadores: [
-        {id:1, nome:'Jogador 1',timeid: '001'},
-        {id:2, nome:'Jogador 2',timeid: '002'},
-        {id:3, nome:'Jogador 3',timeid: '003'},
-        {id:4, nome:'Jogador 4',timeid: '004'}
-      ]
-    }
-  }
-}
+        {
+          id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec",
+          nome: "Jogador 1",
+          time_id: "ghghrfh",
+        },
+        {
+          id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb",
+          nome: "Jogador 2",
+          time_id: "ghghrfh",
+        },
+        {
+          id: "d53d669e-1143-48b6-8169-43156f646b24",
+          nome: "Jogador 3",
+          time_id: "ghghrfh",
+        },
+      ],
+      novo_jogador: "",
+    };
+  },
+  methods: {
+    salvar() {
+      const novo_id = uuid4();
+      this.jogadores.push({
+        id: novo_id,
+        nome: this.novo_jogador,
+      });
+    },
+  },
+};
 </script>
 <template>
-    <div class="container">
-      <div class="title">
-        <h2>Gerenciamento de Jogadores</h2>
-      </div>
-      <div class="form-input">
-        <input type="text" />
-        <button>Salvar</button>
-      </div>
-      <div class="list-jogadores">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Time ID</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr v-for="jogador in jogadores" :key="jogador.id">
-          <td> {{jogador.id}}</td>
-          <td> {{jogador.nome}}</td>
-          <td> {{jogador.timeid}}</td>
-          <td>???</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="container">
+    <div class="title">
+      <h2>Gerenciamento de Jogadores</h2>
     </div>
+    <div class="form-input">
+      <input type="text" v-model="novo_time" />
+      <input type="text" v-model="novo_jogador" />
+      <button @click="salvar">Salvar</button>
+    </div>
+    <div class="list-jogadores">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Time ID</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="jogador in jogadores" :key="jogador.id">
+            <td>{{ jogador.id }}</td>
+            <td>{{ jogador.nome }}</td>
+            <td>{{ jogador.timeid }}</td>
+            <td>???</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <style>
