@@ -40,7 +40,7 @@ export default {
       <h2>Gerenciamento de Jogadores</h2>
     </div>
     <div class="form-input">
-      <input type="text" v-model="novo_time" />
+      <input type="text" v-model="novo_time_id" />
       <input type="text" v-model="novo_jogador" />
       <button @click="salvar">Salvar</button>
     </div>
@@ -62,6 +62,12 @@ export default {
             <td>???</td>
           </tr>
         </tbody>
+        <tr v-for="time_id in time_ids" :key="time_id.id">
+          <td>{{ time_id.id }}</td>
+          <td>{{ time_id.nome }}</td>
+          <td>{{ time_id.timeid }}</td>
+          <td>???</td>
+        </tr>
       </table>
     </div>
   </div>
@@ -93,8 +99,7 @@ export default {
   background-color: black;
   color: #ccc;
   font-weight: bold;
-  margin-left: 1%;
-}
+} 
 
 .list-times {
   display: flex;
