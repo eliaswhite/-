@@ -3,29 +3,29 @@ import { v4 as uuid4 } from "uuid";
 export default {
   data() {
     return {
-      times: [
-        { id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec", nome: "Time 1"},
-        { id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb", nome: "Time 2"},
-        { id: "d53d669e-1143-48b6-8169-43156f646b24", nome: "Time 3"}, 
+      editoras: [
+        { id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec", nome: "Editora 1" },
+        { id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb", nome: "Editora 2" },
+        { id: "d53d669e-1143-48b6-8169-43156f646b24", nome: "Editora 3" },
       ],
-      novo_time: "",
+      novo_editora: "",
     };
   },
   methods: {
     salvar() {
-     if (this.novo_time !== "") {
-      const novo_id = uuid4();
-      this.times.push({
-        id: novo_id,
-        nome: this.novo_time,
-      });
-    this.novo_time = "";
-     } 
+      if (this.novo_editora!== "") {
+        const novo_id = uuid4();
+        this.editoras.push({
+          id: novo_id,
+          nome: this.novo_editora,
+        });
+        this.novo_editora = "";
+      }
     },
-    excluir(time) {
-      const indice = this.times.indexOf(time)
-      this.times.splice(indice, 1);
-    }
+    excluir(editora) {
+      const indice = this.times.indexOf(editora);
+      this.editoras.splice(indice, 1);
+    },
   },
 };
 </script>
@@ -33,13 +33,13 @@ export default {
 <template>
   <div class="container">
     <div class="title">
-      <h2>Gerenciamento de times</h2>
+      <h2>Gerenciamento de editoras</h2>
     </div>
     <div class="form-input">
-      <input type="text" v-model="novo_time" @keydown.enter="salvar"/>
+      <input type="text" v-model="novo_editora" @keydown.enter="salvar" />
       <button @click="salvar">Salvar</button>
     </div>
-    <div class="list-times">
+    <div class="list-editoras">
       <table>
         <thead>
           <tr>
@@ -49,12 +49,11 @@ export default {
           </tr>
         </thead>
         <tbody>
-          <tr v-for="time in times" :key="time.id">
-            <td>{{ time.id }}</td>
-            <td>{{ time.nome }}</td>
+          <tr v-for="editora in editoras" :key="editora.id">
+            <td>{{ editora.id }}</td>
+            <td>{{ editora.nome }}</td>
             <td>
-               <button>Editar</button>
-               <button @click="excluir(time)">Excluir</button>
+              <button @click="excluir(editora)">Excluir</button>
             </td>
           </tr>
         </tbody>

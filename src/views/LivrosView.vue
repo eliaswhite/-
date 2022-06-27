@@ -3,71 +3,60 @@ import { v4 as uuid4 } from "uuid";
 export default {
   data() {
     return {
-      jogadores: [
-        {
-          id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec",
-          nome: "Jogador 1",
-          time_id: "ghghrfh",
-        },
-        {
-          id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb",
-          nome: "Jogador 2",
-          time_id: "ghghrfh",
-        },
-        {
-          id: "d53d669e-1143-48b6-8169-43156f646b24",
-          nome: "Jogador 3",
-          time_id: "ghghrfh",
-        },
+      livros: [
+        { id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec", nome: "Livro 1" },
+        { id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb", nome: "Livro 2" },
+        { id: "d53d669e-1143-48b6-8169-43156f646b24", nome: "Livro 3" },
       ],
-      novo_jogador: "",
+      novo_livro: "",
     };
   },
   methods: {
     salvar() {
-      const novo_id = uuid4();
-      this.jogadores.push({
-        id: novo_id,
-        nome: this.novo_jogador,
-      });
+      if (this.novo_livro !== "") {
+        const novo_id = uuid4();
+        this.livro.push({
+          id: novo_id,
+          nome: this.novo_livro,
+        });
+        this.novo_livro = "";
+      }
+    },
+    excluir(livro) {
+      const indice = this.livros.indexOf(livro);
+      this.livros.splice(indice, 1);
     },
   },
 };
 </script>
+
 <template>
   <div class="container">
     <div class="title">
-      <h2>Gerenciamento de Jogadores</h2>
+      <h2>Gerenciamento de livros</h2>
     </div>
     <div class="form-input">
-      <input type="text" v-model="novo_time_id" />
-      <input type="text" v-model="novo_jogador" />
+      <input type="text" v-model="novo_livro" @keydown.enter="salvar" />
       <button @click="salvar">Salvar</button>
     </div>
-    <div class="list-jogadores">
+    <div class="list-livros">
       <table>
         <thead>
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Time ID</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="jogador in jogadores" :key="jogador.id">
-            <td>{{ jogador.id }}</td>
-            <td>{{ jogador.nome }}</td>
-            <td>{{ jogador.timeid }}</td>
-            <td>???</td>
+          <tr v-for="livro in livros" :key="livro.id">
+            <td>{{ livro.id }}</td>
+            <td>{{ livro.nome }}</td>
+            <td>
+              <button @click="excluir(livros)">Excluir</button>
+            </td>
           </tr>
         </tbody>
-        <tr v-for="time_id in time_ids" :key="time_id.id">
-          <td>{{ time_id.id }}</td>
-          <td>{{ time_id.nome }}</td>
-          <td>{{ time_id.timeid }}</td>
-          <td>???</td>
-        </tr>
       </table>
     </div>
   </div>
@@ -99,7 +88,8 @@ export default {
   background-color: black;
   color: #ccc;
   font-weight: bold;
-} 
+  margin-left: 1%;
+}
 
 .list-times {
   display: flex;
