@@ -40,7 +40,7 @@ export default {
       <button @click="salvar">Salvar</button>
     </div>
     <div class="list-times">
-      <table v-if>
+      <table>
         <thead>
           <tr>
             <th>ID</th>
