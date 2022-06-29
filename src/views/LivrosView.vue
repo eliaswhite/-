@@ -24,7 +24,10 @@ export default {
     },
     excluir(livro) {
       const indice = this.livros.indexOf(livro);
-      this.livros.splice(indice, 1);
+      this.livros.splice(indice, 1);,
+
+
+      
     },
   },
 };

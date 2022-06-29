@@ -4,9 +4,9 @@ export default {
   data() {
     return {
       editoras: [
-        { id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec", nome: "Editora 1" },
-        { id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb", nome: "Editora 2" },
-        { id: "d53d669e-1143-48b6-8169-43156f646b24", nome: "Editora 3" },
+        { id: "7c9e22c2-b2f4-45ba-80d9-5d702bf357ec", nome: "Editora 1", site: "globo"},
+        { id: "3dbf86f0-f4b3-436b-aae7-3a6c043547bb", nome: "Editora 2", site: "sbt" },
+        { id: "d53d669e-1143-48b6-8169-43156f646b24", nome: "Editora 3", site: "band" },
       ],
       novo_editora: "",
     };
@@ -23,7 +23,7 @@ export default {
       }
     },
     excluir(editora) {
-      const indice = this.times.indexOf(editora);
+      const indice = this.editoras.indexOf(editora);
       this.editoras.splice(indice, 1);
     },
   },
@@ -45,6 +45,7 @@ export default {
           <tr>
             <th>ID</th>
             <th>Nome</th>
+            <th>Site</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -52,6 +53,7 @@ export default {
           <tr v-for="editora in editoras" :key="editora.id">
             <td>{{ editora.id }}</td>
             <td>{{ editora.nome }}</td>
+            <td>{{ editora.site }}</td>
             <td>
               <button @click="excluir(editora)">Excluir</button>
             </td>
